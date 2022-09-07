@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { NextUIProvider } from '@nextui-org/react';
 
 function MyApp({ Component, pageProps }) {
-  const [showChild, setShowChild] = useState(false);
-  
-  useEffect(() => {
-    setShowChild(true);
-  }, []);
-
-  if (!showChild) {
-    return null;
+    return (
+      <NextUIProvider>
+        <Component {...pageProps} />
+      </NextUIProvider>
+    )
   }
-
-  if (typeof window === "undefined") {
-    return <></>;
-  } else {
-    return <Component {...pageProps} />;
-  }
-}
 
 export default MyApp;
